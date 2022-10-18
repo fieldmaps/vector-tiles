@@ -1,0 +1,29 @@
+{
+  "options": {
+    "paths": {
+      "root": "",
+      "fonts": "fonts",
+      "styles": "styles",
+      "mbtiles": "data"
+    }
+  },
+  "styles": {
+    "basic": {
+      "style": "basic/style.json"
+    },
+    "bright": {
+      "style": "bright/style.json"
+    },
+    "positron": {
+      "style": "positron/style.json"
+    },
+    "dark-matter": {
+      "style": "dark-matter/style.json"
+    }
+  },
+  "data": {
+    "v3": {
+      "mbtiles": "planet.mbtiles"
+    }
+  }
+}

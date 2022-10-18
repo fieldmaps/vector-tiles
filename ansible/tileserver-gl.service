@@ -1,0 +1,13 @@
+[Unit]
+Description=tileserver-gl service
+StartLimitIntervalSec=30
+StartLimitBurst=2
+FailureAction=reboot
+
+[Service]
+ExecStart=tileserver-gl-light --config /mnt/tileserver_gl/config.json
+Restart=on-failure
+WorkingDirectory=~
+
+[Install]
+WantedBy=multi-user.target
