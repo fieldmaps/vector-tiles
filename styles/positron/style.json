@@ -1,8 +1,8 @@
 {
   "version": 8,
+  "id": "positron",
   "name": "Positron",
   "metadata": {
-    "mapbox:autocomposite": false,
     "mapbox:groups": {
       "101da9f13b64a08fa4b6ac1168e89e5f": {
         "collapsed": false,
@@ -13,20 +13,16 @@
         "collapsed": false,
         "name": "Transportation"
       }
-    },
-    "mapbox:type": "template",
-    "openmaptiles:mapbox:owner": "openmaptiles",
-    "openmaptiles:mapbox:source:url": "mapbox://openmaptiles.4qljc88t",
-    "openmaptiles:version": "3.x"
+    }
   },
   "sources": {
     "openmaptiles": {
       "type": "vector",
-      "url": "https://api.maptiler.com/tiles/v3/tiles.json?key={key}"
+      "url": "mbtiles://{v3}"
     }
   },
-  "sprite": "https://openmaptiles.github.io/positron-gl-style/sprite",
-  "glyphs": "https://api.maptiler.com/fonts/{fontstack}/{range}.pbf?key={key}",
+  "sprite": "{styleJsonFolder}/sprite",
+  "glyphs": "{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
@@ -1329,6 +1325,5 @@
         "text-halo-width": 1.4
       }
     }
-  ],
-  "id": "positron"
+  ]
 }
