@@ -17,6 +17,12 @@
     "openmaptiles": {
       "type": "vector",
       "url": "mbtiles://{v3}"
+    },
+    "natural_earth": {
+      "maxzoom": 5,
+      "tileSize": 512,
+      "url": "mbtiles://{ne1-sr}",
+      "type": "raster"
     }
   },
   "sprite": "{styleJsonFolder}/sprite",
@@ -26,6 +32,21 @@
       "id": "background",
       "type": "background",
       "paint": { "background-color": "#f8f4f0" }
+    },
+    {
+      "id": "natural_earth",
+      "type": "raster",
+      "source": "natural_earth",
+      "maxzoom": 6,
+      "paint": {
+        "raster-opacity": {
+          "base": 1.5,
+          "stops": [
+            [0, 0.6],
+            [6, 0.1]
+          ]
+        }
+      }
     },
     {
       "id": "landcover-glacier",
@@ -2131,7 +2152,7 @@
         ["<=", "admin_level", 8],
         ["!=", "maritime", 1]
       ],
-      "layout": { "line-join": "round", "visibility": "visible" },
+      "layout": { "line-join": "round", "visibility": "none" },
       "paint": {
         "line-color": "#9e9cab",
         "line-dasharray": [3, 1, 1, 1],
@@ -2159,7 +2180,7 @@
       "layout": {
         "line-cap": "round",
         "line-join": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-color": "hsl(248, 7%, 66%)",
@@ -2183,7 +2204,7 @@
       "layout": {
         "line-cap": "round",
         "line-join": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-color": "hsl(248, 7%, 70%)",
@@ -2209,7 +2230,7 @@
       "layout": {
         "line-cap": "round",
         "line-join": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-color": "rgba(154, 189, 214, 1)",
@@ -2895,7 +2916,7 @@
           ]
         },
         "text-transform": "uppercase",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "text-color": "#633",

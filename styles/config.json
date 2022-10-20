@@ -8,14 +8,14 @@
     }
   },
   "styles": {
+    "osm-liberty": {
+      "style": "osm-liberty/style.json"
+    },
     "basic": {
       "style": "basic/style.json"
     },
     "bright": {
       "style": "bright/style.json"
-    },
-    "osm-liberty": {
-      "style": "osm-liberty/style.json"
     },
     "positron": {
       "style": "positron/style.json"
@@ -27,6 +27,18 @@
   "data": {
     "v3": {
       "mbtiles": "planet.mbtiles"
+    },
+    "ne1": {
+      "mbtiles": "ne1.mbtiles"
+    },
+    "ne1-sr": {
+      "mbtiles": "ne1-sr.mbtiles"
+    },
+    "ne2": {
+      "mbtiles": "ne2.mbtiles"
+    },
+    "ne2-sr": {
+      "mbtiles": "ne2-sr.mbtiles"
     }
   }
 }

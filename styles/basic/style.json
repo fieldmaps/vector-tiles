@@ -6,6 +6,12 @@
     "openmaptiles": {
       "type": "vector",
       "url": "mbtiles://{v3}"
+    },
+    "natural_earth": {
+      "maxzoom": 5,
+      "tileSize": 512,
+      "url": "mbtiles://{ne1-sr}",
+      "type": "raster"
     }
   },
   "sprite": "{styleJsonFolder}/sprite",
@@ -15,6 +21,21 @@
       "id": "background",
       "type": "background",
       "paint": { "background-color": "hsl(47, 26%, 88%)" }
+    },
+    {
+      "id": "natural_earth",
+      "type": "raster",
+      "source": "natural_earth",
+      "maxzoom": 6,
+      "paint": {
+        "raster-opacity": {
+          "base": 1.5,
+          "stops": [
+            [0, 0.6],
+            [6, 0.1]
+          ]
+        }
+      }
     },
     {
       "id": "landuse-residential",
@@ -772,7 +793,7 @@
       "source": "openmaptiles",
       "source-layer": "boundary",
       "filter": ["in", "admin_level", 4, 6, 8],
-      "layout": { "visibility": "visible" },
+      "layout": { "visibility": "none" },
       "paint": {
         "line-color": "hsla(0, 0%, 60%, 0.5)",
         "line-dasharray": [2, 1]
@@ -794,7 +815,7 @@
       "layout": {
         "line-cap": "round",
         "line-join": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-color": "hsl(0, 0%, 60%)",
@@ -821,7 +842,7 @@
       "layout": {
         "line-cap": "round",
         "line-join": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-color": "hsl(0, 0%, 60%)",

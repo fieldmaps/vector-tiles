@@ -848,7 +848,7 @@
       "layout": {
         "line-cap": "round",
         "line-join": "round",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "line-blur": 0.4,
@@ -872,7 +872,11 @@
       "source-layer": "boundary",
       "maxzoom": 5,
       "filter": ["all", ["==", "admin_level", 2], ["!has", "claimed_by"]],
-      "layout": { "line-cap": "round", "line-join": "round" },
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "none"
+      },
       "paint": {
         "line-blur": {
           "base": 1,
@@ -900,7 +904,11 @@
       "source-layer": "boundary",
       "minzoom": 5,
       "filter": ["==", "admin_level", 2],
-      "layout": { "line-cap": "round", "line-join": "round" },
+      "layout": {
+        "line-cap": "round",
+        "line-join": "round",
+        "visibility": "none"
+      },
       "paint": {
         "line-blur": {
           "base": 1,
@@ -1198,7 +1206,7 @@
         "text-font": ["Metropolis Regular", "Noto Sans Regular"],
         "text-size": 10,
         "text-transform": "uppercase",
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "text-color": "rgb(113, 129, 144)",

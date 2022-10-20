@@ -1,5 +1,0 @@
-{
-  "dependencies": {
-    "@maplibre/maplibre-gl-style-spec": "^17.0.1"
-  }
-}
