@@ -1,0 +1,91 @@
+[
+  {
+    "id": "adm0_lines_special",
+    "type": "line",
+    "source": "admin",
+    "source-layer": "adm0_lines",
+    "filter": ["==", "rank", 3],
+    "layout": {
+      "line-cap": "butt",
+      "line-join": "round"
+    },
+    "paint": {
+      "line-color": "{adm0-color}",
+      "line-dasharray": [1, 4],
+      "line-opacity": {
+        "base": 1,
+        "stops": [
+          [0, 0.4],
+          [4, 1]
+        ]
+      },
+      "line-width": {
+        "base": 1,
+        "stops": [
+          [3, 1],
+          [5, 1.2],
+          [12, 3]
+        ]
+      }
+    }
+  },
+  {
+    "id": "adm0_lines_disputed",
+    "type": "line",
+    "source": "admin",
+    "source-layer": "adm0_lines",
+    "filter": ["==", "rank", 2],
+    "layout": {
+      "line-cap": "butt",
+      "line-join": "round"
+    },
+    "paint": {
+      "line-color": "{adm0-color}",
+      "line-dasharray": [2, 2],
+      "line-opacity": {
+        "base": 1,
+        "stops": [
+          [0, 0.4],
+          [4, 1]
+        ]
+      },
+      "line-width": {
+        "base": 1,
+        "stops": [
+          [3, 1],
+          [5, 1.2],
+          [12, 3]
+        ]
+      }
+    }
+  },
+  {
+    "id": "adm0_lines",
+    "type": "line",
+    "source": "admin",
+    "source-layer": "adm0_lines",
+    "filter": ["==", "rank", 1],
+    "layout": {
+      "line-cap": "round",
+      "line-join": "round"
+    },
+    "paint": {
+      "line-color": "{adm0-color}",
+      "line-opacity": {
+        "base": 1,
+        "stops": [
+          [0, 0.4],
+          [4, 1]
+        ]
+      },
+      "line-width": {
+        "base": 1,
+        "stops": [
+          [3, 1],
+          [5, 1.2],
+          [12, 3]
+        ]
+      }
+    }
+  }
+]

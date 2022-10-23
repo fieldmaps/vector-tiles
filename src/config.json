@@ -28,6 +28,9 @@
     "v3": {
       "mbtiles": "planet.mbtiles"
     },
+    "admin": {
+      "mbtiles": "admin.mbtiles"
+    },
     "ne1": {
       "mbtiles": "ne1.mbtiles"
     },

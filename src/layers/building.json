@@ -1,0 +1,13 @@
+{
+  "id": "building",
+  "type": "fill",
+  "source": "openmaptiles",
+  "source-layer": "building",
+  "minzoom": 12,
+  "filter": ["==", "$type", "Polygon"],
+  "paint": {
+    "fill-antialias": true,
+    "fill-color": "{building-fill}",
+    "fill-outline-color": "{building-outline}"
+  }
+}

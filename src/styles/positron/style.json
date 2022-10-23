@@ -1,0 +1,61 @@
+{
+  "version": 8,
+  "id": "positron",
+  "name": "Positron",
+  "metadata": {
+    "variables": {
+      "background-color": "hsl(80, 11%, 95%)",
+      "park-color": "hsl(105, 8%, 91%)",
+      "water-color": "hsl(195, 7%, 78%)",
+      "ice-shelf-color": "hsl(0, 0%, 98%)",
+      "glacier-color": "hsl(0, 0%, 98%)",
+      "residential-color": "hsl(60, 9%, 91%)",
+      "wood-color": "hsl(120, 6%, 87%)",
+      "waterway-color": "hsl(195, 17%, 78%)",
+      "water-text-color": "hsl(204, 11%, 65%)",
+      "water-halo-color": "hsl(80, 11%, 95%)",
+      "water-halo-width": 1,
+      "building-fill": "hsl(60, 11%, 91%)",
+      "building-outline": "hsl(60, 1%, 86%)",
+      "casing-color": "hsl(0, 0%, 84%)",
+      "inner-color": "hsl(0, 0%, 100%)",
+      "highway-color": "hsl(0, 0%, 88%)",
+      "highway-subtle-color": "hsl(0, 0%, 85%)",
+      "path-color": "hsl(0, 0%, 92%)",
+      "path-line-dash": [12, 0],
+      "railway-color": "hsl(0, 0%, 87%)",
+      "highway-text-color": "hsl(0, 0%, 73%)",
+      "motorway-text-color": "hsl(214, 11%, 51%)",
+      "highway-halo-color": "hsl(0, 0%, 100%)",
+      "adm0-color": "hsl(248, 1%, 41%)",
+      "adm1-color": "hsl(248, 8%, 64%)",
+      "adm2-color": "hsl(248, 8%, 64%)"
+    }
+  },
+  "sources": {
+    "openmaptiles": {
+      "type": "vector",
+      "url": "mbtiles://{v3}"
+    },
+    "admin": {
+      "type": "vector",
+      "url": "mbtiles://{admin}"
+    }
+  },
+  "sprite": "{styleJsonFolder}/sprite",
+  "glyphs": "{fontstack}/{range}.pbf",
+  "layers": [
+    "nature",
+    "building",
+    "tunnel",
+    "aeroway",
+    "pier",
+    "highway",
+    "railway",
+    "bridge",
+    "highway-name",
+    "adm2",
+    "adm1",
+    "adm0"
+  ]
+}

@@ -12,6 +12,10 @@
       "type": "vector",
       "url": "mbtiles://{v3}"
     },
+    "admin": {
+      "type": "vector",
+      "url": "mbtiles://{admin}"
+    },
     "natural_earth": {
       "maxzoom": 5,
       "tileSize": 512,
@@ -1697,16 +1701,56 @@
       }
     },
     {
-      "id": "boundary_3",
+      "id": "adm2_lines_z6",
       "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "boundary",
-      "minzoom": 8,
-      "filter": ["all", ["in", "admin_level", 3, 4]],
-      "layout": { "line-join": "round", "visibility": "none" },
+      "source": "admin",
+      "source-layer": "adm2_lines",
+      "minzoom": 6,
+      "filter": ["all", ["<=", "area", 4e9], [">", "area", 4e7]],
+      "layout": { "line-join": "round" },
       "paint": {
         "line-color": "#9e9cab",
-        "line-dasharray": [5, 1],
+        "line-dasharray": [2, 2],
+        "line-width": {
+          "base": 1,
+          "stops": [
+            [5, 0.5],
+            [12, 0.9]
+          ]
+        }
+      }
+    },
+    {
+      "id": "adm2_lines_z5",
+      "type": "line",
+      "source": "admin",
+      "source-layer": "adm2_lines",
+      "minzoom": 5,
+      "filter": [">", "area", 4e9],
+      "layout": { "line-join": "round" },
+      "paint": {
+        "line-color": "#9e9cab",
+        "line-dasharray": [2, 2],
+        "line-width": {
+          "base": 1,
+          "stops": [
+            [5, 0.5],
+            [12, 0.9]
+          ]
+        }
+      }
+    },
+    {
+      "id": "adm1_lines_z5",
+      "type": "line",
+      "source": "admin",
+      "source-layer": "adm1_lines",
+      "minzoom": 5,
+      "filter": ["<=", "area", 4e9],
+      "layout": { "line-join": "round" },
+      "paint": {
+        "line-color": "#9e9cab",
+        "line-dasharray": [2, 1],
         "line-width": {
           "base": 1,
           "stops": [
@@ -1718,19 +1762,80 @@
       }
     },
     {
-      "id": "boundary_2_z0-4",
+      "id": "adm1_lines_z4",
       "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "boundary",
-      "maxzoom": 5,
-      "filter": ["all", ["==", "admin_level", 2], ["!has", "claimed_by"]],
+      "source": "admin",
+      "source-layer": "adm1_lines",
+      "minzoom": 4,
+      "filter": ["all", ["<=", "area", 8e10], [">", "area", 4e9]],
+      "layout": { "line-join": "round" },
+      "paint": {
+        "line-color": "hsl(248, 8%, 64%)",
+        "line-dasharray": [2, 1],
+        "line-width": {
+          "base": 1,
+          "stops": [
+            [3, 0.4],
+            [5, 1],
+            [12, 1.8]
+          ]
+        }
+      }
+    },
+    {
+      "id": "adm1_lines_z3",
+      "type": "line",
+      "source": "admin",
+      "source-layer": "adm1_lines",
+      "minzoom": 3,
+      "filter": ["all", ["<=", "area", 1.8e11], [">", "area", 8e10]],
+      "layout": { "line-join": "round" },
+      "paint": {
+        "line-color": "hsl(248, 8%, 64%)",
+        "line-dasharray": [2, 1],
+        "line-width": {
+          "base": 1,
+          "stops": [
+            [3, 0.4],
+            [5, 1],
+            [12, 1.8]
+          ]
+        }
+      }
+    },
+    {
+      "id": "adm1_lines_z0",
+      "type": "line",
+      "source": "admin",
+      "source-layer": "adm1_lines",
+      "filter": [">", "area", 1.8e11],
+      "layout": { "line-join": "round" },
+      "paint": {
+        "line-color": "hsl(248, 8%, 64%)",
+        "line-dasharray": [2, 1],
+        "line-width": {
+          "base": 1,
+          "stops": [
+            [3, 0.4],
+            [5, 1],
+            [12, 1.8]
+          ]
+        }
+      }
+    },
+    {
+      "id": "adm0_lines_special",
+      "type": "line",
+      "source": "admin",
+      "source-layer": "adm0_lines",
+      "filter": ["==", "rank", 3],
       "layout": {
-        "line-cap": "round",
-        "line-join": "round",
-        "visibility": "none"
+        "line-cap": "butt",
+        "line-join": "round"
       },
       "paint": {
         "line-color": "hsl(248, 1%, 41%)",
+        "line-dasharray": [1, 4],
         "line-opacity": {
           "base": 1,
           "stops": [
@@ -1749,16 +1854,44 @@
       }
     },
     {
-      "id": "boundary_2_z5-",
+      "id": "adm0_lines_disputed",
       "type": "line",
-      "source": "openmaptiles",
-      "source-layer": "boundary",
-      "minzoom": 5,
-      "filter": ["all", ["==", "admin_level", 2]],
+      "source": "admin",
+      "source-layer": "adm0_lines",
+      "filter": ["==", "rank", 2],
+      "layout": {
+        "line-cap": "butt",
+        "line-join": "round"
+      },
+      "paint": {
+        "line-color": "hsl(248, 1%, 41%)",
+        "line-dasharray": [2, 2],
+        "line-opacity": {
+          "base": 1,
+          "stops": [
+            [0, 0.4],
+            [4, 1]
+          ]
+        },
+        "line-width": {
+          "base": 1,
+          "stops": [
+            [3, 1],
+            [5, 1.2],
+            [12, 3]
+          ]
+        }
+      }
+    },
+    {
+      "id": "adm0_lines",
+      "type": "line",
+      "source": "admin",
+      "source-layer": "adm0_lines",
+      "filter": ["==", "rank", 1],
       "layout": {
         "line-cap": "round",
-        "line-join": "round",
-        "visibility": "none"
+        "line-join": "round"
       },
       "paint": {
         "line-color": "hsl(248, 1%, 41%)",

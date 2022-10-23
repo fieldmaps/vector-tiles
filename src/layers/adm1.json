@@ -1,0 +1,64 @@
+[
+  {
+    "id": "adm1_lines_z4",
+    "type": "line",
+    "source": "admin",
+    "source-layer": "adm1_lines",
+    "minzoom": 4,
+    "filter": ["<=", "area", 4e9],
+    "layout": { "line-join": "round" },
+    "paint": {
+      "line-color": "{adm1-color}",
+      "line-dasharray": [2, 1],
+      "line-width": {
+        "base": 1,
+        "stops": [
+          [4, 0.4],
+          [5, 1],
+          [12, 1.8]
+        ]
+      }
+    }
+  },
+  {
+    "id": "adm1_lines_z3",
+    "type": "line",
+    "source": "admin",
+    "source-layer": "adm1_lines",
+    "minzoom": 3,
+    "filter": ["all", ["<=", "area", 1.8e11], [">", "area", 4e9]],
+    "layout": { "line-join": "round" },
+    "paint": {
+      "line-color": "{adm1-color}",
+      "line-dasharray": [2, 1],
+      "line-width": {
+        "base": 1,
+        "stops": [
+          [4, 0.4],
+          [5, 1],
+          [12, 1.8]
+        ]
+      }
+    }
+  },
+  {
+    "id": "adm1_lines_z0",
+    "type": "line",
+    "source": "admin",
+    "source-layer": "adm1_lines",
+    "filter": [">", "area", 1.8e11],
+    "layout": { "line-join": "round" },
+    "paint": {
+      "line-color": "{adm1-color}",
+      "line-dasharray": [2, 1],
+      "line-width": {
+        "base": 1,
+        "stops": [
+          [4, 0.4],
+          [5, 1],
+          [12, 1.8]
+        ]
+      }
+    }
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "adm2_lines_z6",
+    "type": "line",
+    "source": "admin",
+    "source-layer": "adm2_lines",
+    "minzoom": 6,
+    "filter": ["all", ["<=", "area", 4e9], [">", "area", 4e7]],
+    "layout": { "line-join": "round" },
+    "paint": {
+      "line-color": "{adm2-color}",
+      "line-dasharray": [2, 2],
+      "line-width": {
+        "base": 1,
+        "stops": [
+          [5, 0.5],
+          [12, 0.9]
+        ]
+      }
+    }
+  },
+  {
+    "id": "adm2_lines_z5",
+    "type": "line",
+    "source": "admin",
+    "source-layer": "adm2_lines",
+    "minzoom": 5,
+    "filter": [">", "area", 4e9],
+    "layout": { "line-join": "round" },
+    "paint": {
+      "line-color": "{adm2-color}",
+      "line-dasharray": [2, 2],
+      "line-width": {
+        "base": 1,
+        "stops": [
+          [5, 0.5],
+          [12, 0.9]
+        ]
+      }
+    }
+  }
+]

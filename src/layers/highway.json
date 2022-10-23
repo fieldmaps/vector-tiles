@@ -1,0 +1,281 @@
+[
+  {
+    "id": "highway_path",
+    "type": "line",
+    "source": "openmaptiles",
+    "source-layer": "transportation",
+    "filter": ["all", ["==", "$type", "LineString"], ["==", "class", "path"]],
+    "layout": {
+      "line-cap": "round",
+      "line-join": "round",
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "{path-color}",
+      "line-dasharray": "{path-line-dash}",
+      "line-opacity": 0.9,
+      "line-width": {
+        "base": 1.2,
+        "stops": [
+          [13, 1],
+          [20, 10]
+        ]
+      }
+    }
+  },
+  {
+    "id": "highway_minor",
+    "type": "line",
+    "source": "openmaptiles",
+    "source-layer": "transportation",
+    "minzoom": 8,
+    "filter": [
+      "all",
+      ["==", "$type", "LineString"],
+      ["in", "class", "minor", "service", "track"]
+    ],
+    "layout": {
+      "line-cap": "round",
+      "line-join": "round",
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "{highway-color}",
+      "line-opacity": 0.9,
+      "line-width": {
+        "base": 1.55,
+        "stops": [
+          [13, 1.8],
+          [20, 20]
+        ]
+      }
+    }
+  },
+  {
+    "id": "highway_major_casing",
+    "type": "line",
+    "source": "openmaptiles",
+    "source-layer": "transportation",
+    "minzoom": 11,
+    "filter": [
+      "all",
+      ["==", "$type", "LineString"],
+      ["in", "class", "primary", "secondary", "tertiary", "trunk"]
+    ],
+    "layout": {
+      "line-cap": "butt",
+      "line-join": "miter",
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "{casing-color}",
+      "line-dasharray": [12, 0],
+      "line-width": {
+        "base": 1.3,
+        "stops": [
+          [10, 3],
+          [20, 23]
+        ]
+      }
+    }
+  },
+  {
+    "id": "highway_major_inner",
+    "type": "line",
+    "source": "openmaptiles",
+    "source-layer": "transportation",
+    "minzoom": 11,
+    "filter": [
+      "all",
+      ["==", "$type", "LineString"],
+      ["in", "class", "primary", "secondary", "tertiary", "trunk"]
+    ],
+    "layout": {
+      "line-cap": "round",
+      "line-join": "round",
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "{inner-color}",
+      "line-width": {
+        "base": 1.3,
+        "stops": [
+          [10, 2],
+          [20, 20]
+        ]
+      }
+    }
+  },
+  {
+    "id": "highway_major_subtle",
+    "type": "line",
+    "source": "openmaptiles",
+    "source-layer": "transportation",
+    "maxzoom": 11,
+    "filter": [
+      "all",
+      ["==", "$type", "LineString"],
+      ["in", "class", "primary", "secondary", "tertiary", "trunk"]
+    ],
+    "layout": {
+      "line-cap": "round",
+      "line-join": "round",
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "{highway-subtle-color}",
+      "line-width": {
+        "stops": [
+          [6, 0],
+          [8, 2]
+        ]
+      }
+    }
+  },
+  {
+    "id": "highway_motorway_casing",
+    "type": "line",
+    "source": "openmaptiles",
+    "source-layer": "transportation",
+    "minzoom": 6,
+    "filter": [
+      "all",
+      ["==", "$type", "LineString"],
+      [
+        "all",
+        ["!in", "brunnel", "bridge", "tunnel"],
+        ["==", "class", "motorway"]
+      ]
+    ],
+    "layout": {
+      "line-cap": "butt",
+      "line-join": "miter",
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "{casing-color}",
+      "line-dasharray": [2, 0],
+      "line-opacity": 1,
+      "line-width": {
+        "base": 1.4,
+        "stops": [
+          [5.8, 0],
+          [6, 3],
+          [20, 40]
+        ]
+      }
+    }
+  },
+  {
+    "id": "highway_motorway_inner",
+    "type": "line",
+    "source": "openmaptiles",
+    "source-layer": "transportation",
+    "minzoom": 6,
+    "filter": [
+      "all",
+      ["==", "$type", "LineString"],
+      [
+        "all",
+        ["!in", "brunnel", "bridge", "tunnel"],
+        ["==", "class", "motorway"]
+      ]
+    ],
+    "layout": {
+      "line-cap": "round",
+      "line-join": "round",
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "{inner-color}",
+      "line-width": {
+        "base": 1.4,
+        "stops": [
+          [4, 2],
+          [6, 1.3],
+          [20, 30]
+        ]
+      }
+    }
+  },
+  {
+    "id": "road_oneway",
+    "type": "symbol",
+    "source": "openmaptiles",
+    "source-layer": "transportation",
+    "minzoom": 15,
+    "filter": ["all", ["==", "oneway", 1]],
+    "layout": {
+      "symbol-placement": "line",
+      "icon-image": "oneway",
+      "symbol-spacing": 200,
+      "icon-padding": 2,
+      "icon-rotation-alignment": "map",
+      "icon-rotate": 0,
+      "icon-size": {
+        "stops": [
+          [15, 0.5],
+          [19, 1]
+        ]
+      }
+    },
+    "paint": { "icon-opacity": 0.5 }
+  },
+  {
+    "id": "road_oneway_opposite",
+    "type": "symbol",
+    "source": "openmaptiles",
+    "source-layer": "transportation",
+    "minzoom": 15,
+    "filter": ["all", ["==", "oneway", -1]],
+    "layout": {
+      "symbol-placement": "line",
+      "icon-image": "oneway",
+      "symbol-spacing": 200,
+      "icon-padding": 2,
+      "icon-rotation-alignment": "map",
+      "icon-rotate": 180,
+      "icon-size": {
+        "stops": [
+          [15, 0.5],
+          [19, 1]
+        ]
+      }
+    },
+    "paint": { "icon-opacity": 0.5 }
+  },
+  {
+    "id": "highway_motorway_subtle",
+    "type": "line",
+    "source": "openmaptiles",
+    "source-layer": "transportation",
+    "maxzoom": 6,
+    "filter": [
+      "all",
+      ["==", "$type", "LineString"],
+      ["==", "class", "motorway"]
+    ],
+    "layout": {
+      "line-cap": "round",
+      "line-join": "round",
+      "visibility": "visible"
+    },
+    "paint": {
+      "line-color": "{highway-color}",
+      "line-opacity": {
+        "base": 1,
+        "stops": [
+          [4, 0],
+          [11, 1]
+        ]
+      },
+      "line-width": {
+        "base": 1.4,
+        "stops": [
+          [4, 2],
+          [6, 1.3]
+        ]
+      }
+    }
+  }
+]
