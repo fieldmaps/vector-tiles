@@ -1,11 +1,11 @@
 import subprocess
-from admin.utils import logging, cwd
+from adm.utils import logging, cwd
 
 logger = logging.getLogger(__name__)
 
 inputs = (cwd / '../tmp').glob('*.mbtiles')
 output = cwd / '../dist/data'
-file = output / 'admin.mbtiles'
+file = output / 'adm.mbtiles'
 
 
 def main():
@@ -13,7 +13,7 @@ def main():
     output.mkdir(parents=True, exist_ok=True)
     subprocess.run([
         'tile-join',
-        f'--name=admin',
+        f'--name=adm',
         '--no-tile-size-limit',
         '--force',
         f'--output={file}',

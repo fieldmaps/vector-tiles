@@ -1,21 +1,25 @@
 import subprocess
 import shutil
 from multiprocessing import Pool
-from admin.utils import logging, cwd
+from adm.utils import logging, cwd
 
 logger = logging.getLogger(__name__)
 
-inputs = cwd / '../../admin-boundaries/data/edge-matched/humanitarian/intl'
+inputs = cwd / '../../admin-boundaries/outputs/edge-matched/humanitarian/intl'
 area = cwd / '../../population-statistics/data/area.csv'
 outputs = cwd / '../tmp'
 
 
 def export(geom, l):
-    input = inputs / f'adm4_{geom}.gpkg'
+    input = inputs / f'adm4_{geom}.gpkg.zip'
     output = outputs / f'adm{l}_{geom}.geojsonl.gz'
     output.unlink(missing_ok=True)
     sql_if = "SELECT * FROM adm0_lines"
-    sql_else = f"SELECT g.*, CAST(c.area_{l} AS REAL) AS area FROM adm{l}_{geom} g LEFT JOIN '{area}'.area c ON g.adm0_id = c.adm0_id"
+    sql_else = ' '.join([
+        f"SELECT g.*, CAST(c.area_{l} AS REAL) AS area",
+        f"FROM adm{l}_{geom} g",
+        f"LEFT JOIN '{area}'.area c ON g.adm0_id = c.adm0_id"
+    ])
     sql = sql_if if geom == 'lines' and l == 0 else sql_else
     subprocess.run([
         'ogr2ogr',
@@ -24,7 +28,7 @@ def export(geom, l):
         '-dialect', 'INDIRECT_SQLITE',
         '-sql', sql,
         '/vsigzip/' + str(output),
-        input,
+        '/vsizip/' + str(input),
     ])
     logger.info(f'adm{l}_{geom}')
 

@@ -37,7 +37,7 @@
     },
     "admin": {
       "type": "vector",
-      "url": "mbtiles://{admin}"
+      "url": "mbtiles://{adm}"
     }
   },
   "sprite": "{styleJsonFolder}/sprite",
@@ -52,11 +52,11 @@
     "railway",
     "bridge",
     "highway-name",
-    "adm2",
-    "adm1",
-    "adm0",
-    "adm0-name",
-    "adm1-name",
-    "adm2-name"
+    "adm2-lines",
+    "adm1-lines",
+    "adm0-lines",
+    "adm0-points",
+    "adm1-points",
+    "adm2-points"
   ]
 }

@@ -22,3 +22,21 @@ if __name__ == '__main__':
         cwd / 'dist/styles',
         f's3://data.fieldmaps.io/tileserver_gl/',
     ])
+    subprocess.run([
+        's3cmd', 'sync',
+        '--acl-public',
+        '--delete-removed',
+        '--rexclude', '\/\.',
+        '--multipart-chunk-size-mb=5120',
+        cwd / 'dist/data/adm_cartography.mbtiles',
+        f's3://data.fieldmaps.io/tileserver_gl/data/adm_cartography.mbtiles',
+    ])
+    subprocess.run([
+        's3cmd', 'sync',
+        '--acl-public',
+        '--delete-removed',
+        '--rexclude', '\/\.',
+        '--multipart-chunk-size-mb=5120',
+        cwd / 'dist/data/adm_polygons.mbtiles',
+        f's3://data.fieldmaps.io/tileserver_gl/data/adm_polygons.mbtiles',
+    ])
