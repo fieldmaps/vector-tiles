@@ -4,8 +4,8 @@ from admin.utils import logging, cwd
 logger = logging.getLogger(__name__)
 
 inputs = (cwd / '../tmp').glob('*.mbtiles')
-output = cwd / '../config/data'
-file = output / 'admin2.mbtiles'
+output = cwd / '../dist/data'
+file = output / 'admin.mbtiles'
 
 
 def main():

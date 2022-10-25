@@ -12,19 +12,11 @@
     "paint": {
       "line-color": "{adm0-color}",
       "line-dasharray": [1, 4],
-      "line-opacity": {
-        "base": 1,
-        "stops": [
-          [0, 0.4],
-          [4, 1]
-        ]
-      },
       "line-width": {
         "base": 1,
         "stops": [
-          [3, 1],
-          [5, 1.2],
-          [12, 3]
+          [0, 0],
+          [14, 5]
         ]
       }
     }
@@ -42,19 +34,11 @@
     "paint": {
       "line-color": "{adm0-color}",
       "line-dasharray": [2, 2],
-      "line-opacity": {
-        "base": 1,
-        "stops": [
-          [0, 0.4],
-          [4, 1]
-        ]
-      },
       "line-width": {
         "base": 1,
         "stops": [
-          [3, 1],
-          [5, 1.2],
-          [12, 3]
+          [0, 0],
+          [14, 5]
         ]
       }
     }
@@ -71,19 +55,11 @@
     },
     "paint": {
       "line-color": "{adm0-color}",
-      "line-opacity": {
-        "base": 1,
-        "stops": [
-          [0, 0.4],
-          [4, 1]
-        ]
-      },
       "line-width": {
         "base": 1,
         "stops": [
-          [3, 1],
-          [5, 1.2],
-          [12, 3]
+          [0, 0],
+          [14, 5]
         ]
       }
     }

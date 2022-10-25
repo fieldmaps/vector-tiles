@@ -1,7 +1,7 @@
 {
   "version": 8,
-  "id": "osm-liberty",
-  "name": "OSM Liberty",
+  "id": "color",
+  "name": "Color",
   "metadata": {
     "maputnik:license": "https://github.com/maputnik/osm-liberty/blob/gh-pages/LICENSE.md",
     "maputnik:renderer": "mbgljs",

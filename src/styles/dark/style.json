@@ -1,35 +1,33 @@
 {
   "version": 8,
-  "id": "dark-matter",
-  "name": "Dark Matter",
+  "id": "dark",
+  "name": "Dark",
   "metadata": {
     "variables": {
-      "background-color": "hsl(0, 0%, 5%)",
-      "park-color": "hsl(105, 4%, 9%)",
-      "water-color": "hsl(240, 4%, 11%)",
-      "ice-shelf-color": "hsl(0, 0%, 5%)",
-      "glacier-color": "hsl(0, 1%, 2%)",
-      "residential-color": "hsl(0, 2%, 5%)",
-      "wood-color": "hsl(0, 0%, 13%)",
-      "waterway-color": "hsl(240, 4%, 11%)",
+      "background-color": "hsl(0, 0%, 8%)",
+      "park-color": "hsl(105, 4%, 6%)",
+      "water-color": "hsl(0, 0%, 0%)",
+      "ice-color": "hsl(0, 0%, 12%)",
+      "residential-color": "hsl(0, 2%, 6%)",
+      "wood-color": "hsl(0, 0%, 6%)",
       "water-text-color": "hsla(0, 0%, 0%, 0.7)",
       "water-halo-color": "hsl(0, 0%, 27%)",
       "water-halo-width": 0,
-      "building-fill": "hsl(0, 0%, 4%)",
-      "building-outline": "hsl(240, 4%, 11%)",
-      "casing-color": "hsla(0, 0%, 24%, 0.2)",
-      "inner-color": "hsl(0, 0%, 0%)",
-      "highway-color": "hsl(0, 0%, 9%)",
-      "highway-subtle-color": "hsl(0, 0%, 16%)",
+      "building-fill": "hsl(0, 0%, 6%)",
+      "building-outline": "hsl(240, 4%, 3%)",
+      "casing-color": "hsl(0, 0%, 6%)",
+      "inner-color": "hsl(0, 0%, 12%)",
+      "highway-color": "hsl(0, 0%, 10%)",
+      "highway-subtle-color": "hsl(0, 0%, 10%)",
       "path-color": "hsl(240, 4%, 11%)",
-      "path-line-dash": [1.5, 1.5],
       "railway-color": "hsl(0, 0%, 14%)",
       "highway-text-color": "hsl(0, 1%, 31%)",
       "motorway-text-color": "hsl(0, 0%, 37%)",
       "highway-halo-color": "hsl(0, 0%, 0%)",
-      "adm0-color": "hsl(0, 0%, 23%)",
-      "adm1-color": "hsl(0, 0%, 21%)",
-      "adm2-color": "hsl(0, 0%, 21%)"
+      "adm0-color": "hsl(0, 0%, 33%)",
+      "adm0-text-color": "hsl(0, 0%, 60%)",
+      "adm0-halo-color": "hsl(0, 0%, 5%)",
+      "adm1-color": "hsl(0, 0%, 25%)"
     }
   },
   "sources": {
@@ -56,6 +54,9 @@
     "highway-name",
     "adm2",
     "adm1",
-    "adm0"
+    "adm0",
+    "adm0-name",
+    "adm1-name",
+    "adm2-name"
   ]
 }

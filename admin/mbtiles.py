@@ -1,4 +1,3 @@
-import time
 import subprocess
 from multiprocessing import Pool
 from admin.utils import logging, cwd, MAX_ZOOM
@@ -20,6 +19,7 @@ def adm_points(l):
         '--no-tile-size-limit',
         '--force',
         f'--include=adm{l}_name',
+        '--include=status_cd',
         '--include=area',
         f'--output={outputs}/adm{l}_points.mbtiles',
         f'{inputs}/adm{l}_points.geojsonl.gz',
@@ -38,7 +38,8 @@ def adm_lines(l):
         '--read-parallel',
         '--no-tile-size-limit',
         '--force',
-        '--include=rank' if l == 0 else '--include=area',
+        '--include=rank',
+        '--include=area',
         f'--output={outputs}/adm{l}_lines.mbtiles',
         f'{inputs}/adm{l}_lines.geojsonl.gz',
     ])
@@ -49,7 +50,7 @@ def main():
     outputs.mkdir(parents=True, exist_ok=True)
     results = []
     pool = Pool()
-    for l in range(0, 5):
+    for l in range(0, 3):
         for func in [adm_points, adm_lines]:
             result = pool.apply_async(func, args=[l])
             results.append(result)

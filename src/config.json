@@ -8,20 +8,20 @@
     }
   },
   "styles": {
-    "osm-liberty": {
-      "style": "osm-liberty/style.json"
+    "color": {
+      "style": "color/style.json"
+    },
+    "light": {
+      "style": "light/style.json"
+    },
+    "dark": {
+      "style": "dark/style.json"
     },
     "basic": {
       "style": "basic/style.json"
     },
     "bright": {
       "style": "bright/style.json"
-    },
-    "positron": {
-      "style": "positron/style.json"
-    },
-    "dark-matter": {
-      "style": "dark-matter/style.json"
     }
   },
   "data": {

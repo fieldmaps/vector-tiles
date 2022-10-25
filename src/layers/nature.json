@@ -43,7 +43,7 @@
       ["==", "subclass", "ice_shelf"]
     ],
     "layout": { "visibility": "visible" },
-    "paint": { "fill-color": "{ice-shelf-color}", "fill-opacity": 0.7 }
+    "paint": { "fill-color": "{ice-color}", "fill-opacity": 0.7 }
   },
   {
     "id": "landcover_glacier",
@@ -58,7 +58,7 @@
     ],
     "layout": { "visibility": "visible" },
     "paint": {
-      "fill-color": "{glacier-color}",
+      "fill-color": "{ice-color}",
       "fill-opacity": {
         "base": 1,
         "stops": [
@@ -127,7 +127,7 @@
     "filter": ["==", "$type", "LineString"],
     "layout": { "visibility": "visible" },
     "paint": {
-      "line-color": "{waterway-color}",
+      "line-color": "{water-color}",
       "line-opacity": {
         "base": 1,
         "stops": [

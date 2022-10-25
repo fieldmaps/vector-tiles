@@ -34,7 +34,7 @@ def main():
     results = []
     pool = Pool()
     for geom in ['points', 'lines']:
-        for l in range(0, 5):
+        for l in range(0, 3):
             result = pool.apply_async(export, args=[geom, l])
             results.append(result)
     pool.close()

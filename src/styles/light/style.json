@@ -1,17 +1,15 @@
 {
   "version": 8,
-  "id": "positron",
-  "name": "Positron",
+  "id": "light",
+  "name": "Light",
   "metadata": {
     "variables": {
       "background-color": "hsl(80, 11%, 95%)",
       "park-color": "hsl(105, 8%, 91%)",
       "water-color": "hsl(195, 7%, 78%)",
-      "ice-shelf-color": "hsl(0, 0%, 98%)",
-      "glacier-color": "hsl(0, 0%, 98%)",
+      "ice-color": "hsl(0, 0%, 98%)",
       "residential-color": "hsl(60, 9%, 91%)",
       "wood-color": "hsl(120, 6%, 87%)",
-      "waterway-color": "hsl(195, 17%, 78%)",
       "water-text-color": "hsl(204, 11%, 65%)",
       "water-halo-color": "hsl(80, 11%, 95%)",
       "water-halo-width": 1,
@@ -20,16 +18,16 @@
       "casing-color": "hsl(0, 0%, 84%)",
       "inner-color": "hsl(0, 0%, 100%)",
       "highway-color": "hsl(0, 0%, 88%)",
-      "highway-subtle-color": "hsl(0, 0%, 85%)",
+      "highway-subtle-color": "hsl(0, 0%, 100%)",
       "path-color": "hsl(0, 0%, 92%)",
-      "path-line-dash": [12, 0],
       "railway-color": "hsl(0, 0%, 87%)",
       "highway-text-color": "hsl(0, 0%, 73%)",
       "motorway-text-color": "hsl(214, 11%, 51%)",
       "highway-halo-color": "hsl(0, 0%, 100%)",
-      "adm0-color": "hsl(248, 1%, 41%)",
-      "adm1-color": "hsl(248, 8%, 64%)",
-      "adm2-color": "hsl(248, 8%, 64%)"
+      "adm0-color": "hsl(345, 6%, 13%)",
+      "adm0-text-color": "hsl(0, 0%, 40%)",
+      "adm0-halo-color": "hsl(0, 0%, 95%)",
+      "adm1-color": "hsl(216, 3%, 66%)"
     }
   },
   "sources": {
@@ -56,6 +54,9 @@
     "highway-name",
     "adm2",
     "adm1",
-    "adm0"
+    "adm0",
+    "adm0-name",
+    "adm1-name",
+    "adm2-name"
   ]
 }

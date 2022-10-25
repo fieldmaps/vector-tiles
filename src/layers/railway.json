@@ -26,7 +26,7 @@
     ],
     "layout": { "line-join": "round", "visibility": "visible" },
     "paint": {
-      "line-color": "{ice-shelf-color}",
+      "line-color": "{ice-color}",
       "line-dasharray": [3, 3],
       "line-width": 2
     }
@@ -59,7 +59,7 @@
     ],
     "layout": { "line-join": "round", "visibility": "visible" },
     "paint": {
-      "line-color": "{ice-shelf-color}",
+      "line-color": "{ice-color}",
       "line-dasharray": [3, 3],
       "line-width": 2
     }
@@ -100,7 +100,7 @@
     ],
     "layout": { "line-join": "round", "visibility": "visible" },
     "paint": {
-      "line-color": "{ice-shelf-color}",
+      "line-color": "{ice-color}",
       "line-dasharray": [3, 3],
       "line-width": {
         "base": 1.3,
