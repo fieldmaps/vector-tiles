@@ -14,6 +14,7 @@ def main():
     subprocess.run([
         'tile-join',
         f'--name=adm',
+        f'--attribution=<a href="https://fieldmaps.io/" target="_blank">&copy; FieldMaps</a>',
         '--no-tile-size-limit',
         '--force',
         f'--output={file}',

@@ -31,13 +31,13 @@
     }
   },
   "sources": {
-    "openmaptiles": {
-      "type": "vector",
-      "url": "mbtiles://{v3}"
-    },
     "admin": {
       "type": "vector",
       "url": "mbtiles://{adm}"
+    },
+    "openmaptiles": {
+      "type": "vector",
+      "url": "mbtiles://{v3}"
     }
   },
   "sprite": "{styleJsonFolder}/sprite",

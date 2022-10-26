@@ -5,7 +5,7 @@ StartLimitBurst=2
 FailureAction=reboot
 
 [Service]
-ExecStart=tileserver-gl-light --config /mnt/tileserver_gl/config.json
+ExecStart=tileserver-gl-light --no-cors --config /mnt/tileserver_gl/config.json
 Restart=on-failure
 WorkingDirectory=~
 
