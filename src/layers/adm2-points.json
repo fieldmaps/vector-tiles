@@ -1,12 +1,39 @@
 [
   {
+    "id": "adm2_name_z11",
+    "type": "symbol",
+    "source": "admin",
+    "source-layer": "adm2_points",
+    "minzoom": 11,
+    "maxzoom": 15,
+    "filter": ["<=", "area", 2e7],
+    "layout": {
+      "text-anchor": "center",
+      "text-field": "{adm2_name}",
+      "text-font": ["Roboto Condensed Regular", "PT Sans Narrow Regular"],
+      "text-size": {
+        "base": 1,
+        "stops": [
+          [11, 10],
+          [15, 16]
+        ]
+      },
+      "text-transform": "uppercase"
+    },
+    "paint": {
+      "text-color": "{adm0-text-color}",
+      "text-halo-color": "{adm0-halo-color}",
+      "text-halo-width": 1.4
+    }
+  },
+  {
     "id": "adm2_name_z10",
     "type": "symbol",
     "source": "admin",
     "source-layer": "adm2_points",
     "minzoom": 10,
     "maxzoom": 14,
-    "filter": ["<=", "area", 2e8],
+    "filter": ["all", ["<=", "area", 2e8], [">", "area", 2e7]],
     "layout": {
       "text-anchor": "center",
       "text-field": "{adm2_name}",

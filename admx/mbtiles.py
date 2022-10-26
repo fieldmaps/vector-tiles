@@ -17,7 +17,7 @@ def adm_polygons(l):
         '--read-parallel',
         '--no-tile-size-limit',
         '--force',
-        f'--output={outputs}/adm{l}_polygons.mbtiles',
+        f'--output={outputs}/adm{l}.mbtiles',
         f'{inputs}/adm{l}_polygons.geojsonl.gz',
     ])
     logger.info(f'adm{l}_polygons')

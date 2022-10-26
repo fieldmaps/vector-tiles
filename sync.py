@@ -31,7 +31,7 @@ if __name__ == '__main__':
         cwd / 'dist/data/adm.mbtiles',
         f's3://data.fieldmaps.io/tileserver_gl/data/adm.mbtiles',
     ])
-    for l in range(0, 2):
+    for l in range(0, 5):
         subprocess.run([
             's3cmd', 'sync',
             '--acl-public',

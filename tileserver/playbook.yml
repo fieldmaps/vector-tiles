@@ -72,7 +72,7 @@
         src: ~/.s3cfg
         dest: .s3cfg
     - name: Sync tiles
-      shell: s3cmd sync --delete-removed s3://data.fieldmaps.io/tileserver_gl /mnt/
+      shell: s3cmd sync --exclude planet.mbtiles s3://data.fieldmaps.io/tileserver_gl /mnt/
       register: result
       until: result.rc == 0
     - name: Start services

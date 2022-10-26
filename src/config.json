@@ -31,6 +31,21 @@
     "adm": {
       "mbtiles": "adm.mbtiles"
     },
+    "adm0": {
+      "mbtiles": "adm0.mbtiles"
+    },
+    "adm1": {
+      "mbtiles": "adm1.mbtiles"
+    },
+    "adm2": {
+      "mbtiles": "adm2.mbtiles"
+    },
+    "adm3": {
+      "mbtiles": "adm3.mbtiles"
+    },
+    "adm4": {
+      "mbtiles": "adm4.mbtiles"
+    },
     "ne1": {
       "mbtiles": "ne1.mbtiles"
     },
