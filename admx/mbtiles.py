@@ -3,7 +3,7 @@ from admx.utils import logging, cwd, MAX_ZOOM
 
 logger = logging.getLogger(__name__)
 
-inputs = cwd / '../tmp_polygons'
+inputs = cwd / '../tmpx'
 outputs = cwd / '../dist/data'
 
 
@@ -25,6 +25,6 @@ def adm_polygons(l):
 
 def main():
     outputs.mkdir(parents=True, exist_ok=True)
-    for l in range(0, 3):
+    for l in range(0, 5):
         adm_polygons(l)
     logger.info('finished')

@@ -1,11 +1,11 @@
 [
   {
-    "id": "adm2_lines_z8",
+    "id": "adm2_lines_z9",
     "type": "line",
     "source": "admin",
     "source-layer": "adm2_lines",
-    "minzoom": 8,
-    "filter": ["<", "area", 5e7],
+    "minzoom": 9,
+    "filter": ["<=", "area", 2e8],
     "layout": { "line-join": "round" },
     "paint": {
       "line-color": "{adm1-color}",
@@ -13,8 +13,28 @@
       "line-width": {
         "base": 1,
         "stops": [
-          [8, 0],
-          [22, 5]
+          [9, 0.1],
+          [14, 5]
+        ]
+      }
+    }
+  },
+  {
+    "id": "adm2_lines_z8",
+    "type": "line",
+    "source": "admin",
+    "source-layer": "adm2_lines",
+    "minzoom": 8,
+    "filter": ["all", ["<=", "area", 8e8], [">", "area", 2e8]],
+    "layout": { "line-join": "round" },
+    "paint": {
+      "line-color": "{adm1-color}",
+      "line-dasharray": [2, 2],
+      "line-width": {
+        "base": 1,
+        "stops": [
+          [8, 0.1],
+          [13, 5]
         ]
       }
     }
@@ -25,7 +45,7 @@
     "source": "admin",
     "source-layer": "adm2_lines",
     "minzoom": 7,
-    "filter": ["all", ["<=", "area", 1e8], [">", "area", 5e7]],
+    "filter": ["all", ["<=", "area", 3e9], [">", "area", 8e8]],
     "layout": { "line-join": "round" },
     "paint": {
       "line-color": "{adm1-color}",
@@ -33,8 +53,8 @@
       "line-width": {
         "base": 1,
         "stops": [
-          [7, 0],
-          [21, 5]
+          [7, 0.1],
+          [12, 5]
         ]
       }
     }
@@ -45,7 +65,7 @@
     "source": "admin",
     "source-layer": "adm2_lines",
     "minzoom": 6,
-    "filter": ["all", ["<=", "area", 5e8], [">", "area", 1e8]],
+    "filter": ["all", ["<=", "area", 2.3e10], [">", "area", 3e9]],
     "layout": { "line-join": "round" },
     "paint": {
       "line-color": "{adm1-color}",
@@ -53,8 +73,8 @@
       "line-width": {
         "base": 1,
         "stops": [
-          [6, 0],
-          [20, 5]
+          [6, 0.1],
+          [11, 5]
         ]
       }
     }
@@ -65,7 +85,7 @@
     "source": "admin",
     "source-layer": "adm2_lines",
     "minzoom": 5,
-    "filter": ["all", ["<=", "area", 1e9], [">", "area", 5e8]],
+    "filter": ["all", ["<=", "area", 1e11], [">", "area", 2.3e10]],
     "layout": { "line-join": "round" },
     "paint": {
       "line-color": "{adm1-color}",
@@ -73,8 +93,8 @@
       "line-width": {
         "base": 1,
         "stops": [
-          [5, 0],
-          [19, 5]
+          [5, 0.1],
+          [10, 5]
         ]
       }
     }
@@ -85,46 +105,6 @@
     "source": "admin",
     "source-layer": "adm2_lines",
     "minzoom": 4,
-    "filter": ["all", ["<=", "area", 1e10], [">", "area", 1e9]],
-    "layout": { "line-join": "round" },
-    "paint": {
-      "line-color": "{adm1-color}",
-      "line-dasharray": [2, 2],
-      "line-width": {
-        "base": 1,
-        "stops": [
-          [4, 0],
-          [18, 5]
-        ]
-      }
-    }
-  },
-  {
-    "id": "adm2_lines_z3",
-    "type": "line",
-    "source": "admin",
-    "source-layer": "adm2_lines",
-    "minzoom": 3,
-    "filter": ["all", ["<=", "area", 1e11], [">", "area", 1e10]],
-    "layout": { "line-join": "round" },
-    "paint": {
-      "line-color": "{adm1-color}",
-      "line-dasharray": [2, 2],
-      "line-width": {
-        "base": 1,
-        "stops": [
-          [3, 0],
-          [17, 5]
-        ]
-      }
-    }
-  },
-  {
-    "id": "adm2_lines_z2",
-    "type": "line",
-    "source": "admin",
-    "source-layer": "adm2_lines",
-    "minzoom": 2,
     "filter": [">", "area", 1e11],
     "layout": { "line-join": "round" },
     "paint": {
@@ -133,8 +113,8 @@
       "line-width": {
         "base": 1,
         "stops": [
-          [2, 0],
-          [16, 5]
+          [4, 0.1],
+          [9, 5]
         ]
       }
     }

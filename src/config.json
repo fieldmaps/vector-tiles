@@ -31,15 +31,6 @@
     "adm": {
       "mbtiles": "adm.mbtiles"
     },
-    "adm0": {
-      "mbtiles": "adm0_polygons.mbtiles"
-    },
-    "adm1": {
-      "mbtiles": "adm1_polygons.mbtiles"
-    },
-    "adm2": {
-      "mbtiles": "adm2_polygons.mbtiles"
-    },
     "ne1": {
       "mbtiles": "ne1.mbtiles"
     },

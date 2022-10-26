@@ -70,6 +70,6 @@ def main():
         func = adm_lines if geom == 'lines' else adm_points
         func(0, f'adm0_{geom}', 0, MAX_ZOOM)
         for l in range(1, 3):
-            for layer, a_min, a_max in get_layers(geom, l):
-                func(l, f'adm{l}_{geom}_{layer}', a_min, a_max)
+            for layer, z_min, z_max in get_layers(geom, l):
+                func(l, f'adm{l}_{geom}_{layer}', z_min, z_max)
     logger.info('finished')

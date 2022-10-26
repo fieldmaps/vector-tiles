@@ -4,7 +4,7 @@ from multiprocessing import Pool
 from admx.utils import logging, cwd
 
 logger = logging.getLogger(__name__)
-outputs = cwd / '../tmp_polygons'
+outputs = cwd / '../tmpx'
 
 
 def get_inputs(l):
@@ -34,7 +34,7 @@ def main():
     outputs.mkdir(parents=True, exist_ok=True)
     results = []
     pool = Pool()
-    for l in range(0, 3):
+    for l in range(0, 5):
         result = pool.apply_async(export, args=[l])
         results.append(result)
     pool.close()

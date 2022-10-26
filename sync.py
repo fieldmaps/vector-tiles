@@ -28,15 +28,16 @@ if __name__ == '__main__':
         '--delete-removed',
         '--rexclude', '\/\.',
         '--multipart-chunk-size-mb=5120',
-        cwd / 'dist/data/adm_cartography.mbtiles',
-        f's3://data.fieldmaps.io/tileserver_gl/data/adm_cartography.mbtiles',
+        cwd / 'dist/data/adm.mbtiles',
+        f's3://data.fieldmaps.io/tileserver_gl/data/adm.mbtiles',
     ])
-    subprocess.run([
-        's3cmd', 'sync',
-        '--acl-public',
-        '--delete-removed',
-        '--rexclude', '\/\.',
-        '--multipart-chunk-size-mb=5120',
-        cwd / 'dist/data/adm_polygons.mbtiles',
-        f's3://data.fieldmaps.io/tileserver_gl/data/adm_polygons.mbtiles',
-    ])
+    for l in range(0, 2):
+        subprocess.run([
+            's3cmd', 'sync',
+            '--acl-public',
+            '--delete-removed',
+            '--rexclude', '\/\.',
+            '--multipart-chunk-size-mb=5120',
+            cwd / f'dist/data/adm{l}.mbtiles',
+            f's3://data.fieldmaps.io/tileserver_gl/data/adm{l}.mbtiles',
+        ])
