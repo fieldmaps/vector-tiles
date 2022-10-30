@@ -1,10 +1,10 @@
 import shutil
 import subprocess
-import pandas as pd
 from multiprocessing import Pool
 from psycopg import connect
 from psycopg.sql import SQL, Identifier
-from admx.utils import logging, cwd, DATABASE, cols_meta, get_pop_cols
+from admx.utils import (logging, cwd, DATABASE, cols_meta,
+                        get_pop_cols, compress_file, get_inputs)
 
 logger = logging.getLogger(__name__)
 outputs = cwd / '../tmpx'
@@ -26,12 +26,6 @@ query_2 = """
 """
 
 
-def get_inputs(l):
-    inputs_0 = cwd / '../../adm0-generator/outputs/osm/intl'
-    inputs_x = cwd / '../../admin-boundaries/outputs/edge-matched/humanitarian/intl'
-    return inputs_0 if l == 0 else inputs_x
-
-
 def run_funcs(l):
     import_data(l)
     merge(l)
@@ -40,26 +34,24 @@ def run_funcs(l):
 
 
 def import_data(l):
-    area = cwd / f'../../population-statistics/data/area_{l}.parquet'
+    input_zip = get_inputs(l) / f'adm{l}_polygons.gpkg.zip'
+    shutil.unpack_archive(input_zip, outputs)
+    polygons = outputs / f'adm{l}_polygons.gpkg'
+    area = cwd / f'../../population-statistics/data/area_{l}.xlsx'
     pop = (
-        cwd / f'../../population-statistics/outputs/population/humanitarian/intl/cod/adm{l}_join.parquet')
-    for src, dest in [(area, f'adm{l}_area'), (pop, f'adm{l}_pop')]:
-        df = pd.read_parquet(src)
-        df.to_sql(dest, f'postgresql:///{DATABASE}',
-                  if_exists='replace', index=False, method='multi')
-    input = get_inputs(l) / f'adm{l}_polygons.gpkg.zip'
-    subprocess.run([
-        'ogr2ogr',
-        '-overwrite',
-        '-makevalid',
-        '-dim', 'XY',
-        '-t_srs', 'EPSG:4326',
-        '-lco', 'FID=fid',
-        '-lco', 'GEOMETRY_NAME=geom',
-        '-nln', f'adm{l}_polygons',
-        '-f', 'PostgreSQL', f'PG:dbname={DATABASE}',
-        '/vsizip/' + str(input),
-    ])
+        cwd / f'../../population-statistics/outputs/population/humanitarian/intl/cod/adm{l}_join.xlsx')
+    inputs = [('area', area), ('pop', pop), ('polygons', polygons)]
+    for name, input in inputs:
+        subprocess.run([
+            'ogr2ogr',
+            '-overwrite',
+            '-lco', 'FID=fid',
+            '-lco', 'GEOMETRY_NAME=geom',
+            '-nln', f'adm{l}_{name}',
+            '-f', 'PostgreSQL', f'PG:dbname={DATABASE}',
+            input,
+        ])
+    polygons.unlink(missing_ok=True)
     logger.info(f'adm{l}_import')
 
 
@@ -81,15 +73,18 @@ def merge(l):
 
 
 def export(l):
-    output = outputs / f'adm{l}_polygons.geojsonl.gz'
+    output = outputs / f'adm{l}_polygons.geojsonl'
     output.unlink(missing_ok=True)
+    compressed = outputs / f'adm{l}_polygons.geojsonl.gz'
     subprocess.run([
         'ogr2ogr',
         '-mapFieldType', 'Date=String',
         '-f', 'GeoJSONSeq',
-        '/vsigzip/' + str(output),
+        output,
         f'PG:dbname={DATABASE}', f'adm{l}_join',
     ])
+    compress_file(output, compressed)
+    output.unlink(missing_ok=True)
     logger.info(f'adm{l}_export')
 
 

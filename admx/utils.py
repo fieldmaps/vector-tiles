@@ -1,3 +1,5 @@
+import gzip
+import shutil
 import logging
 from pathlib import Path
 
@@ -23,3 +25,17 @@ def get_pop_cols():
             cols.append(f'{grp}_{dest}')
     cols = cols + special
     return cols
+
+
+def compress_file(output, compressed):
+    compressed.unlink(missing_ok=True)
+    with open(output, 'rb') as f_in:
+        with gzip.open(compressed, 'wb', compresslevel=1) as f_out:
+            shutil.copyfileobj(f_in, f_out)
+            output.unlink()
+
+
+def get_inputs(l):
+    inputs_0 = cwd / '../../adm0-generator/outputs/osm/intl'
+    inputs_x = cwd / '../../admin-boundaries/outputs/edge-matched/humanitarian/intl'
+    return inputs_0 if l == 0 else inputs_x
