@@ -6,7 +6,7 @@ from adm.utils import logging, cwd
 logger = logging.getLogger(__name__)
 
 inputs = cwd / '../../admin-boundaries/outputs/edge-matched/humanitarian/intl'
-area = cwd / '../../population-statistics/data/area.csv'
+area = cwd / '../../population-statistics/data/area.xlsx'
 outputs = cwd / '../tmp'
 
 
@@ -16,9 +16,9 @@ def export(geom, l):
     output.unlink(missing_ok=True)
     sql_if = "SELECT * FROM adm0_lines"
     sql_else = ' '.join([
-        f"SELECT g.*, CAST(c.area_{l} AS REAL) AS area",
-        f"FROM adm{l}_{geom} g",
-        f"LEFT JOIN '{area}'.area c ON g.adm0_id = c.adm0_id"
+        f"SELECT a.*, b.area_{l} AS area",
+        f"FROM adm{l}_{geom} a",
+        f"LEFT JOIN '{area}'.area b ON a.adm0_id = b.adm0_id",
     ])
     sql = sql_if if geom == 'lines' and l == 0 else sql_else
     subprocess.run([

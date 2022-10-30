@@ -7,7 +7,7 @@ from adm.utils import logging, cwd
 logger = logging.getLogger(__name__)
 
 inputs = cwd / '../../admin-boundaries/outputs/edge-matched/humanitarian/intl'
-area = cwd / '../../population-statistics/data/area.csv'
+area = cwd / '../../population-statistics/data/area.xlsx'
 outputs = cwd / '../tmp'
 
 
@@ -17,9 +17,9 @@ def export_adm0(geom):
     output.unlink(missing_ok=True)
     sql_if = "SELECT * FROM adm0_lines"
     sql_else = ' '.join([
-        f"SELECT g.*, CAST(c.area_0 AS REAL) AS area",
-        f"FROM adm0_{geom} g",
-        f"LEFT JOIN '{area}'.area c ON g.adm0_id = c.adm0_id",
+        f"SELECT a.*, b.area_0 AS area",
+        f"FROM adm0_{geom} a",
+        f"LEFT JOIN '{area}'.area b ON a.adm0_id = b.adm0_id",
     ])
     sql = sql_if if geom == 'lines' else sql_else
     subprocess.run([
@@ -39,9 +39,9 @@ def export(geom, l, layer, a_min, a_max):
     output = outputs / f'adm{l}_{geom}_{layer}.geojsonl.gz'
     output.unlink(missing_ok=True)
     sql = ' '.join([
-        f"SELECT g.*, CAST(c.area_{l} AS REAL) AS area",
-        f"FROM adm{l}_{geom} g",
-        f"LEFT JOIN '{area}'.area c ON g.adm0_id = c.adm0_id",
+        f"SELECT a.*, b.area_{l} AS area",
+        f"FROM adm{l}_{geom} a",
+        f"LEFT JOIN '{area}'.area b ON a.adm0_id = b.adm0_id",
         f"WHERE area <= {a_max} AND area > {a_min}",
     ])
     subprocess.run([

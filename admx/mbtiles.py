@@ -11,7 +11,7 @@ def adm_polygons(l):
     subprocess.run([
         'tippecanoe',
         '--layer=admx',
-        f'--attribution=<a href="https://fieldmaps.io/" target="_blank">&copy; FieldMaps</a>',
+        f'--attribution=<a href="https://fieldmaps.io/data/" target="_blank">&copy; FieldMaps</a>',
         f'--maximum-zoom={MAX_ZOOM}',
         '--simplify-only-low-zooms',
         '--detect-shared-borders',

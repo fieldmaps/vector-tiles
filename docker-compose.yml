@@ -1,0 +1,5 @@
+services:
+  vector-tiles:
+    build: .
+    volumes:
+      - ./dist:/usr/src/app/dist
