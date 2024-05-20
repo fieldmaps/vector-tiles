@@ -3,41 +3,21 @@ from pathlib import Path
 
 cwd = Path(__file__).parent
 
-if __name__ == '__main__':
-    subprocess.run([
-        's3cmd', 'sync',
-        '--acl-public',
-        '--delete-removed',
-        '--rexclude', '\/\.',
-        '--multipart-chunk-size-mb=5120',
-        cwd / 'dist/config.json',
-        f's3://data.fieldmaps.io/tileserver_gl/config.json',
-    ])
-    subprocess.run([
-        's3cmd', 'sync',
-        '--acl-public',
-        '--delete-removed',
-        '--rexclude', '\/\.',
-        '--multipart-chunk-size-mb=5120',
-        cwd / 'dist/styles',
-        f's3://data.fieldmaps.io/tileserver_gl/',
-    ])
-    subprocess.run([
-        's3cmd', 'sync',
-        '--acl-public',
-        '--delete-removed',
-        '--rexclude', '\/\.',
-        '--multipart-chunk-size-mb=5120',
-        cwd / 'dist/data/adm.mbtiles',
-        f's3://data.fieldmaps.io/tileserver_gl/data/adm.mbtiles',
-    ])
-    for l in range(0, 5):
-        subprocess.run([
-            's3cmd', 'sync',
-            '--acl-public',
-            '--delete-removed',
-            '--rexclude', '\/\.',
-            '--multipart-chunk-size-mb=5120',
-            cwd / f'dist/data/adm{l}.mbtiles',
-            f's3://data.fieldmaps.io/tileserver_gl/data/adm{l}.mbtiles',
-        ])
+
+def upload(src, dest):
+    subprocess.run(
+        [
+            "rclone",
+            "sync",
+            "--progress",
+            "--include={adm.pmtiles,adm0.pmtiles,adm1.pmtiles,adm2.pmtiles,adm3.pmtiles,adm4.pmtiles}",
+            "--s3-no-check-bucket",
+            "--s3-chunk-size=256M",
+            src,
+            dest,
+        ]
+    )
+
+
+if __name__ == "__main__":
+    upload(cwd / "dist/data", "r2://fieldmaps-tiles")

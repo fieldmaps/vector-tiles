@@ -1,10 +1,10 @@
-from admx import geojsonl, mbtiles
-from admx.utils import logging
+from . import geojsonl, tiles
+from .utils import logging
 
 logger = logging.getLogger(__name__)
 
-if __name__ == '__main__':
-    logger.info('starting')
+if __name__ == "__main__":
+    logger.info("starting")
     geojsonl.main()
-    mbtiles.main()
+    tiles.main()
     geojsonl.cleanup()
