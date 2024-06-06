@@ -13,7 +13,7 @@ outputs = cwd / "../tmpx"
 query_1 = """
     DROP VIEW IF EXISTS {view_out};
     CREATE VIEW {view_out} AS
-    SELECT a.*, b.area
+    SELECT a.*, b.area_km
     FROM {table_in} a
     LEFT JOIN {area} b ON {join_1} = {join_2};
 """
@@ -36,7 +36,7 @@ def import_data(lvl):
     input_zip = get_inputs(lvl) / f"adm{lvl}_polygons.gpkg.zip"
     shutil.unpack_archive(input_zip, outputs)
     polygons = outputs / f"adm{lvl}_polygons.gpkg"
-    area = areas / "area_{l}.xlsx"
+    area = areas / f"area_{lvl}.xlsx"
     inputs = [("area", area), ("polygons", polygons)]
     for name, input in inputs:
         subprocess.run(

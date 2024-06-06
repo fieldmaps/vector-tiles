@@ -20,7 +20,7 @@ def adm_points(lvl):
             "--force",
             f"--include=adm{lvl}_name",
             "--include=status_cd",
-            "--include=area",
+            "--include=area_km",
             f"--output={outputs}/adm{lvl}_points.pmtiles",
             f"{inputs}/adm{lvl}_points.geojsonl.gz",
         ]
@@ -40,7 +40,7 @@ def adm_lines(lvl):
             "--no-tile-size-limit",
             "--force",
             "--include=rank",
-            "--include=area",
+            "--include=area_km",
             f"--output={outputs}/adm{lvl}_lines.pmtiles",
             f"{inputs}/adm{lvl}_lines.geojsonl.gz",
         ]

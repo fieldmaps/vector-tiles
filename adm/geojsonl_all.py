@@ -11,19 +11,19 @@ area = cwd / "../../population-statistics/data/area.xlsx"
 outputs = cwd / "../tmp"
 
 
-def export(geom, l):
+def export(geom, lvl):
     input = inputs / f"adm4_{geom}.gpkg.zip"
-    output = outputs / f"adm{l}_{geom}.geojsonl.gz"
+    output = outputs / f"adm{lvl}_{geom}.geojsonl.gz"
     output.unlink(missing_ok=True)
-    sql_if = "SELECT * FROM adm0_lines"
+    sql_if = "SELECT * FROM adm0_lines;"
     sql_else = " ".join(
         [
-            f"SELECT a.*, b.area_{l} AS area",
-            f"FROM adm{l}_{geom} a",
+            f"SELECT a.*, b.area_{lvl}_km AS area_km",
+            f"FROM adm{lvl}_{geom} a",
             f"LEFT JOIN '{area}'.area b ON a.adm0_id = b.adm0_id;",
         ]
     )
-    sql = sql_if if geom == "lines" and l == 0 else sql_else
+    sql = sql_if if geom == "lines" and lvl == 0 else sql_else
     subprocess.run(
         [
             "ogr2ogr",
@@ -35,7 +35,7 @@ def export(geom, l):
             "/vsizip/" + str(input),
         ]
     )
-    logger.info(f"adm{l}_{geom}")
+    logger.info(f"adm{lvl}_{geom}")
 
 
 def main():
@@ -43,8 +43,8 @@ def main():
     results = []
     pool = Pool()
     for geom in ["points", "lines"]:
-        for l in range(0, 3):
-            result = pool.apply_async(export, args=[geom, l])
+        for lvl in range(0, 3):
+            result = pool.apply_async(export, args=[geom, lvl])
             results.append(result)
     pool.close()
     pool.join()
