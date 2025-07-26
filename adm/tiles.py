@@ -26,7 +26,7 @@ def adm_points(lvl, name, z_min, z_max):
             "--include=area_km",
             f"--output={outputs}/{name}.mbtiles",
             f"{inputs}/{name}.geojsonl.gz",
-        ]
+        ], check=False,
     )
     logger.info(name)
 
@@ -48,7 +48,7 @@ def adm_lines(lvl, name, z_min, z_max):
             "--include=area_km",
             f"--output={outputs}/{name}.mbtiles",
             f"{inputs}/{name}.geojsonl.gz",
-        ]
+        ], check=False,
     )
     logger.info(name)
 

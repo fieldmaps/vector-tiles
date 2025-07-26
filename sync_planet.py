@@ -17,5 +17,6 @@ if __name__ == "__main__":
             "--s3-chunk-size=256M",
             f"https://build.protomaps.com/{yesterday_str}.pmtiles",
             "r2://fieldmaps-tiles/planet.pmtiles",
-        ]
+        ],
+        check=False,
     )

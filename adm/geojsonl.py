@@ -23,7 +23,7 @@ def export_adm0(geom):
             "SELECT a.*, b.area_0_km AS area_km",
             f"FROM adm0_{geom} a",
             f"LEFT JOIN '{area}'.area b ON a.adm0_id = b.adm0_id;",
-        ]
+        ],
     )
     sql = sql_if if geom == "lines" else sql_else
     subprocess.run(
@@ -35,7 +35,7 @@ def export_adm0(geom):
             *["-sql", sql],
             "/vsigzip/" + str(output),
             "/vsizip/" + str(input),
-        ]
+        ], check=False,
     )
     logger.info(f"adm0_{geom}")
 
@@ -49,8 +49,8 @@ def export(geom, lvl, layer, a_min, a_max):
             f"SELECT a.*, b.area_{lvl}_km AS area_km",
             f"FROM adm{lvl}_{geom} a",
             f"LEFT JOIN '{area}'.area b ON a.adm0_id = b.adm0_id",
-            f"WHERE a.adm{lvl-1}_id IS NOT NULL AND area_km <= {a_max} AND area_km > {a_min};",
-        ]
+            f"WHERE a.adm{lvl - 1}_id IS NOT NULL AND area_km <= {a_max} AND area_km > {a_min};",
+        ],
     )
     subprocess.run(
         [
@@ -61,7 +61,7 @@ def export(geom, lvl, layer, a_min, a_max):
             *["-sql", sql],
             "/vsigzip/" + str(output),
             "/vsizip/" + str(input),
-        ]
+        ], check=False,
     )
     logger.info(f"adm{lvl}_{geom}_{layer}")
 

@@ -15,7 +15,7 @@ def upload(src, dest):
             "--s3-chunk-size=256M",
             src,
             dest,
-        ]
+        ], check=False,
     )
 
 

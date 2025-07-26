@@ -23,7 +23,7 @@ def adm_points(lvl):
             "--include=area_km",
             f"--output={outputs}/adm{lvl}_points.pmtiles",
             f"{inputs}/adm{lvl}_points.geojsonl.gz",
-        ]
+        ], check=False,
     )
     logger.info(f"adm{lvl}_points")
 
@@ -43,14 +43,14 @@ def adm_lines(lvl):
             "--include=area_km",
             f"--output={outputs}/adm{lvl}_lines.pmtiles",
             f"{inputs}/adm{lvl}_lines.geojsonl.gz",
-        ]
+        ], check=False,
     )
     logger.info(f"adm{lvl}_lines")
 
 
 def main():
     outputs.mkdir(parents=True, exist_ok=True)
-    for lvl in range(0, 3):
+    for lvl in range(3):
         adm_points(lvl)
         adm_lines(lvl)
     logger.info("finished")

@@ -21,6 +21,6 @@ def main():
             "--force",
             f"--output={file}",
             *inputs,
-        ]
+        ], check=False,
     )
     logger.info("finished")

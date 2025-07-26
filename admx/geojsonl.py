@@ -48,7 +48,7 @@ def import_data(lvl):
                 *["-nln", f"adm{lvl}_{name}"],
                 *["-f", "PostgreSQL", f"PG:dbname={DATABASE}"],
                 input,
-            ]
+            ], check=False,
         )
     polygons.unlink(missing_ok=True)
     logger.info(f"adm{lvl}_import")
@@ -63,7 +63,7 @@ def merge(lvl):
             join_1=Identifier("a", f"adm{lvl}_id"),
             join_2=Identifier("b", f"adm{lvl}_id"),
             view_out=Identifier(f"adm{lvl}_join"),
-        )
+        ),
     )
     conn.close()
     logger.info(f"adm{lvl}_merge")
@@ -80,7 +80,7 @@ def export(lvl):
             *["-f", "GeoJSONSeq"],
             output,
             *[f"PG:dbname={DATABASE}", f"adm{lvl}_join"],
-        ]
+        ], check=False,
     )
     compress_file(output, compressed)
     output.unlink(missing_ok=True)
@@ -94,7 +94,7 @@ def clean(lvl):
             view_out=Identifier(f"adm{lvl}_join"),
             table_out1=Identifier(f"adm{lvl}_polygons"),
             table_out2=Identifier(f"adm{lvl}_area"),
-        )
+        ),
     )
     conn.close()
     logger.info(f"adm{lvl}_clean")
@@ -104,7 +104,7 @@ def main():
     outputs.mkdir(parents=True, exist_ok=True)
     results = []
     pool = Pool()
-    for l in range(0, 5):
+    for l in range(5):
         result = pool.apply_async(run_funcs, args=[l])
         results.append(result)
     pool.close()

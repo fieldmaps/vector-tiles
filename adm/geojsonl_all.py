@@ -21,7 +21,7 @@ def export(geom, lvl):
             f"SELECT a.*, b.area_{lvl}_km AS area_km",
             f"FROM adm{lvl}_{geom} a",
             f"LEFT JOIN '{area}'.area b ON a.adm0_id = b.adm0_id;",
-        ]
+        ],
     )
     sql = sql_if if geom == "lines" and lvl == 0 else sql_else
     subprocess.run(
@@ -33,7 +33,7 @@ def export(geom, lvl):
             *["-sql", sql],
             "/vsigzip/" + str(output),
             "/vsizip/" + str(input),
-        ]
+        ], check=False,
     )
     logger.info(f"adm{lvl}_{geom}")
 
@@ -43,7 +43,7 @@ def main():
     results = []
     pool = Pool()
     for geom in ["points", "lines"]:
-        for lvl in range(0, 3):
+        for lvl in range(3):
             result = pool.apply_async(export, args=[geom, lvl])
             results.append(result)
     pool.close()
